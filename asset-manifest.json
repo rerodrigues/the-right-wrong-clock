@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/the-right-wrong-clock/static/css/main.0c2cedec.css",
-    "main.js": "/the-right-wrong-clock/static/js/main.05cc4b99.js",
+    "main.css": "/the-right-wrong-clock/static/css/main.e4a2ddab.css",
+    "main.js": "/the-right-wrong-clock/static/js/main.04e99541.js",
     "static/js/787.3a9ad02b.chunk.js": "/the-right-wrong-clock/static/js/787.3a9ad02b.chunk.js",
     "static/media/wall.jpg": "/the-right-wrong-clock/static/media/wall.1cd0b9dc78a3c4145e86.jpg",
     "index.html": "/the-right-wrong-clock/index.html",
-    "main.0c2cedec.css.map": "/the-right-wrong-clock/static/css/main.0c2cedec.css.map",
-    "main.05cc4b99.js.map": "/the-right-wrong-clock/static/js/main.05cc4b99.js.map",
+    "main.e4a2ddab.css.map": "/the-right-wrong-clock/static/css/main.e4a2ddab.css.map",
+    "main.04e99541.js.map": "/the-right-wrong-clock/static/js/main.04e99541.js.map",
     "787.3a9ad02b.chunk.js.map": "/the-right-wrong-clock/static/js/787.3a9ad02b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0c2cedec.css",
-    "static/js/main.05cc4b99.js"
+    "static/css/main.e4a2ddab.css",
+    "static/js/main.04e99541.js"
   ]
 }
