@@ -1,11 +1,7 @@
 import './Clock.css';
 import { getHours, getMinutes } from 'date-fns';
 import { memo } from "react";
-
-interface ClockProps {
-  ownTime: number;
-  isEnabled: boolean;
-}
+import { ClockProps } from '../../types/Clock';
 
 const Clock = memo((props: ClockProps) => {
   const { ownTime, isEnabled } = props;
@@ -18,8 +14,7 @@ const Clock = memo((props: ClockProps) => {
       <div className='clock_hour'>{hour}</div>
       <div className='clock_minute'>{minute}</div>
     </div>
-  )
-
-})
+  );
+});
 
 export default Clock;

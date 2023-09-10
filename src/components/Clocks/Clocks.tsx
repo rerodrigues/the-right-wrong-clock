@@ -1,11 +1,14 @@
 import "./Clocks.css";
 import { memo, useEffect, useState } from "react";
-import Clock from "../Clock";
 import { addHours, addMinutes, differenceInMilliseconds, isSameMinute, startOfDay, startOfMinute } from 'date-fns'
 
-interface ClocksProps {
+import { ClockTypes } from "../../types/Clock";
+import DigitalClock from "../Clock";
+import AnalogClock from "../AnalogClock/AnalogClock";
 
-}
+interface ClocksProps {
+  clockType?: ClockTypes,
+};
 
 const HOURS = 12;
 const MINUTES = 60;
@@ -15,10 +18,13 @@ const ONE_MINUTE_IN_MS = 1000 * 60;
 const totalClocks = Array.from<number>({ length: NUBMER_OF_CLOCKS });
 
 const Clocks = memo((props: ClocksProps) => {
+  const { clockType } = props;
   const [currentMinute, setCurrentMinutes] = useState<Date>();
 
   const initialDate = Date.now();
   const zeroHour = startOfDay(initialDate);
+
+  const Clock = clockType === ClockTypes.ANALOG ? AnalogClock : DigitalClock;
 
   useEffect(() => {
     // set initial minute on page load
