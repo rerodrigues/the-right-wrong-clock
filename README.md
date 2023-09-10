@@ -1,4 +1,7 @@
-# Getting Started with Create React App
+# The Right Wrong Clock
+
+> Even a Broken Clock Is Right Twice a Day
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
