@@ -26,6 +26,7 @@
 }
 
 .wall_source-code {
+  display: inline-flex;
   margin-top: 20px;
   font-weight: bold;
   text-decoration: none;
