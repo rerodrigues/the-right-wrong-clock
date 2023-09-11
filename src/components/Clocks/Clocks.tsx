@@ -1,10 +1,11 @@
 import "./Clocks.css";
-import { memo, useEffect, useState } from "react";
-import { addHours, addMinutes, differenceInMilliseconds, isSameMinute, startOfDay, startOfMinute } from 'date-fns'
+import { memo, useEffect, useRef, useState } from "react";
+import { addMinutes, differenceInMilliseconds, isSameMinute, startOfDay, startOfMinute, subHours } from 'date-fns'
 
 import { ClockTypes } from "../../types/Clock";
 import DigitalClock from "../Clock";
 import AnalogClock from "../AnalogClock/AnalogClock";
+import { ONE_MINUTE_IN_MS } from "../../constants";
 
 interface ClocksProps {
   clockType?: ClockTypes,
@@ -13,13 +14,15 @@ interface ClocksProps {
 const HOURS = 12;
 const MINUTES = 60;
 const NUBMER_OF_CLOCKS = HOURS * MINUTES;
-const ONE_MINUTE_IN_MS = 1000 * 60;
 
 const totalClocks = Array.from<number>({ length: NUBMER_OF_CLOCKS });
 
 const Clocks = memo((props: ClocksProps) => {
   const { clockType } = props;
   const [currentMinute, setCurrentMinutes] = useState<Date>();
+
+  const timeoutId = useRef<NodeJS.Timer>();
+  const intervalId = useRef<NodeJS.Timer>();
 
   const initialDate = Date.now();
   const zeroHour = startOfDay(initialDate);
@@ -43,16 +46,24 @@ const Clocks = memo((props: ClocksProps) => {
     };
 
     const timeOutFn = () => {
-      setInterval(intervalFn, ONE_MINUTE_IN_MS);
-      clearTimeout(initialTimeOutId);
+      setCurrentMinutes(new Date());
+
+      // update the clocks every full minute
+      intervalId.current = setInterval(intervalFn, ONE_MINUTE_IN_MS);
+      clearTimeout(timeoutId.current);
     };
 
-    const initialTimeOutId = setTimeout(timeOutFn, delayToFirstIteration);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    timeoutId.current = setTimeout(timeOutFn, delayToFirstIteration);
+
+    return () => {
+      if(timeoutId.current) clearTimeout(timeoutId.current);
+      if(intervalId.current) clearInterval(intervalId.current);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
   // Probably this can be optmized
-  const checkIsEnabled = (ownTime: Date, minute: number) => currentMinute ? isSameMinute(ownTime, currentMinute) || isSameMinute(addHours(ownTime, 12), currentMinute) : false;
+  const checkIsEnabled = (ownTime: Date) => currentMinute ? isSameMinute(ownTime, currentMinute) || isSameMinute(ownTime, subHours(currentMinute, 12)) : false;
 
   return (
     <section className="clocks">
@@ -61,7 +72,7 @@ const Clocks = memo((props: ClocksProps) => {
         return <Clock
           key={minute}
           ownTime={ownTime.valueOf()}
-          isEnabled={checkIsEnabled(ownTime, minute)}
+          isEnabled={checkIsEnabled(ownTime)}
           />
         })
       }

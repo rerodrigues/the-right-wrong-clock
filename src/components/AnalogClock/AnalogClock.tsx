@@ -2,6 +2,7 @@ import './AnalogClock.css';
 import { ClockProps } from '../../types/Clock';
 
 import { memo, useEffect, useRef, useState } from "react";
+import { ONE_SECOND_IN_MS } from '../../constants';
 
 const AnalogClock = memo((props: ClockProps) => {
   const { ownTime, isEnabled } = props;
@@ -12,12 +13,15 @@ const AnalogClock = memo((props: ClockProps) => {
 
   useEffect(() => {
     if(isEnabled) {
-      timerId.current = setInterval(() => {
+      const intervalFn = () => {
         setTime(new Date());
-      }, 1000);
+      };
+
+      setTime(new Date());
+      timerId.current = setInterval(intervalFn, ONE_SECOND_IN_MS);
 
       return () => {
-        clearInterval(timerId.current);
+        if(timerId.current) clearTimeout(timerId.current);
       }
     }
   },[isEnabled, ownTime]);
