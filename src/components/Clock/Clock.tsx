@@ -6,7 +6,7 @@ import { ONE_SECOND_IN_MS } from '../../constants';
 const Clock = memo((props: ClockProps) => {
   const { ownTime, isEnabled } = props;
   const [time, setTime] = useState<Date>(new Date(ownTime));
-  const timerId = useRef<NodeJS.Timer>();
+  const timerId = useRef<NodeJS.Timeout>();
 
   const className = isEnabled ? 'clock clock--lit' : 'clock';
   const hour = time.getHours().toString().padStart(2, '0');

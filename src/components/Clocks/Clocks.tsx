@@ -21,8 +21,8 @@ const Clocks = memo((props: ClocksProps) => {
   const { clockType } = props;
   const [currentMinute, setCurrentMinutes] = useState<Date>();
 
-  const timeoutId = useRef<NodeJS.Timer>();
-  const intervalId = useRef<NodeJS.Timer>();
+  const timeoutId = useRef<NodeJS.Timeout>();
+  const intervalId = useRef<NodeJS.Timeout>();
 
   const initialDate = Date.now();
   const zeroHour = startOfDay(initialDate);

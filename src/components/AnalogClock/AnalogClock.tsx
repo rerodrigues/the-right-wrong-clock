@@ -7,7 +7,7 @@ import { ONE_SECOND_IN_MS } from '../../constants';
 const AnalogClock = memo((props: ClockProps) => {
   const { ownTime, isEnabled } = props;
   const [time, setTime] = useState<Date>(new Date(ownTime));
-  const timerId = useRef<NodeJS.Timer>();
+  const timerId = useRef<NodeJS.Timeout>();
 
   const className = isEnabled ? 'analog-clock analog-clock--lit' : 'analog-clock';
 
