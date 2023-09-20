@@ -1,4 +1,4 @@
-import "./Clocks.css";
+import "./Clocks.sass";
 import { memo, useEffect, useRef, useState } from "react";
 import { addMinutes, differenceInMilliseconds, isSameMinute, startOfDay, startOfMinute, subHours } from 'date-fns'
 

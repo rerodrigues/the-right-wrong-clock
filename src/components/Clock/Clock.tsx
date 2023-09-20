@@ -1,4 +1,4 @@
-import './Clock.css';
+import './Clock.sass';
 import { memo, useEffect, useRef, useState } from "react";
 import { ClockProps } from '../../types/Clock';
 import { ONE_SECOND_IN_MS } from '../../constants';

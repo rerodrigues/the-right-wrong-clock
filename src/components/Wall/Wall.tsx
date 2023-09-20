@@ -1,4 +1,4 @@
-import "./Wall.css";
+import "./Wall.sass";
 import { memo, useState } from "react";
 import Clocks from "../Clocks/Clocks";
 import { ClockTypes } from "../../types/Clock";

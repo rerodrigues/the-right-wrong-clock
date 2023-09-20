@@ -1,4 +1,4 @@
-import './AnalogClock.css';
+import './AnalogClock.sass';
 import { ClockProps } from '../../types/Clock';
 
 import { memo, useEffect, useRef, useState } from "react";

@@ -1,5 +1,5 @@
 import { memo } from "react";
-import "./Switch.css";
+import "./Switch.sass";
 
 interface SwitchProps {
   onLabel?: string;
