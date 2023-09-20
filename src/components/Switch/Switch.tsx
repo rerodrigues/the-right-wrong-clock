@@ -36,4 +36,6 @@ const Switch = memo((props: SwitchProps) => {
   )
 });
 
+Switch.displayName = 'Switch';
+
 export default Switch;

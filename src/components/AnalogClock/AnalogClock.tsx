@@ -64,4 +64,6 @@ const AnalogClock = memo((props: ClockProps) => {
   );
 });
 
+AnalogClock.displayName = 'AnalogClock';
+
 export default AnalogClock;

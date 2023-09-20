@@ -9,7 +9,7 @@ import { ONE_MINUTE_IN_MS } from "../../constants";
 
 interface ClocksProps {
   clockType?: ClockTypes,
-};
+}
 
 const HOURS = 12;
 const MINUTES = 60;
@@ -79,5 +79,7 @@ const Clocks = memo((props: ClocksProps) => {
     </section>
   )
 })
+
+Clocks.displayName = 'Clocks';
 
 export default Clocks;

@@ -39,4 +39,6 @@ const Clock = memo((props: ClockProps) => {
   );
 });
 
+Clock.displayName = 'Clock'
+
 export default Clock;

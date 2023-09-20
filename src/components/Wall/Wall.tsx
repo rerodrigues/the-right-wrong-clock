@@ -4,11 +4,7 @@ import Clocks from "../Clocks/Clocks";
 import { ClockTypes } from "../../types/Clock";
 import Switch from "../Switch/Switch";
 
-interface WallProps {
-
-}
-
-const Wall = memo((props: WallProps) => {
+const Wall = memo(() => {
   const [clockType, setClockType] = useState(ClockTypes.ANALOG);
 
   const changeClockType = (value: boolean) => {
@@ -34,5 +30,7 @@ const Wall = memo((props: WallProps) => {
     </section>
   )
 })
+
+Wall.displayName = 'Wall'
 
 export default Wall;
