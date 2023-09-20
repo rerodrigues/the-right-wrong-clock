@@ -1,14 +1,21 @@
-import "./Clocks.sass";
-import { memo, useEffect, useRef, useState } from "react";
-import { addMinutes, differenceInMilliseconds, isSameMinute, startOfDay, startOfMinute, subHours } from 'date-fns'
+import './Clocks.sass';
+import { memo, useEffect, useRef, useState } from 'react';
+import {
+  addMinutes,
+  differenceInMilliseconds,
+  isSameMinute,
+  startOfDay,
+  startOfMinute,
+  subHours,
+} from 'date-fns';
 
-import { ClockTypes } from "../../types/Clock";
-import DigitalClock from "../Clock";
-import AnalogClock from "../AnalogClock/AnalogClock";
-import { ONE_MINUTE_IN_MS } from "../../constants";
+import { ClockTypes } from '../../types/Clock';
+import DigitalClock from '../Clock';
+import AnalogClock from '../AnalogClock/AnalogClock';
+import { ONE_MINUTE_IN_MS } from '../../constants';
 
 interface ClocksProps {
-  clockType?: ClockTypes,
+  clockType?: ClockTypes;
 }
 
 const HOURS = 12;
@@ -56,29 +63,29 @@ const Clocks = memo((props: ClocksProps) => {
     timeoutId.current = setTimeout(timeOutFn, delayToFirstIteration);
 
     return () => {
-      if(timeoutId.current) clearTimeout(timeoutId.current);
-      if(intervalId.current) clearInterval(intervalId.current);
-    }
+      if (timeoutId.current) clearTimeout(timeoutId.current);
+      if (intervalId.current) clearInterval(intervalId.current);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
+  }, []);
 
   // Probably this can be optmized
-  const checkIsEnabled = (ownTime: Date) => currentMinute ? isSameMinute(ownTime, currentMinute) || isSameMinute(ownTime, subHours(currentMinute, 12)) : false;
+  const checkIsEnabled = (ownTime: Date) =>
+    currentMinute
+      ? isSameMinute(ownTime, currentMinute) || isSameMinute(ownTime, subHours(currentMinute, 12))
+      : false;
 
   return (
     <section className="clocks">
-      { totalClocks.map((_, minute) => {
+      {totalClocks.map((_, minute) => {
         const ownTime = addMinutes(zeroHour, minute);
-        return <Clock
-          key={minute}
-          ownTime={ownTime.valueOf()}
-          isEnabled={checkIsEnabled(ownTime)}
-          />
-        })
-      }
+        return (
+          <Clock key={minute} ownTime={ownTime.valueOf()} isEnabled={checkIsEnabled(ownTime)} />
+        );
+      })}
     </section>
-  )
-})
+  );
+});
 
 Clocks.displayName = 'Clocks';
 

@@ -1,7 +1,7 @@
 import './AnalogClock.sass';
 import { ClockProps } from '../../types/Clock';
 
-import { memo, useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from 'react';
 import { ONE_SECOND_IN_MS } from '../../constants';
 
 const AnalogClock = memo((props: ClockProps) => {
@@ -12,7 +12,7 @@ const AnalogClock = memo((props: ClockProps) => {
   const className = isEnabled ? 'analog-clock analog-clock--lit' : 'analog-clock';
 
   useEffect(() => {
-    if(isEnabled) {
+    if (isEnabled) {
       const intervalFn = () => {
         setTime(new Date());
       };
@@ -21,10 +21,10 @@ const AnalogClock = memo((props: ClockProps) => {
       timerId.current = setInterval(intervalFn, ONE_SECOND_IN_MS);
 
       return () => {
-        if(timerId.current) clearTimeout(timerId.current);
-      }
+        if (timerId.current) clearTimeout(timerId.current);
+      };
     }
-  },[isEnabled, ownTime]);
+  }, [isEnabled, ownTime]);
 
   return (
     <div className="analog-clock-container">
@@ -32,19 +32,19 @@ const AnalogClock = memo((props: ClockProps) => {
         <div
           className="hour_hand"
           style={{
-            transform: `rotateZ(${time.getHours() * 30}deg)`
+            transform: `rotateZ(${time.getHours() * 30}deg)`,
           }}
         />
         <div
           className="min_hand"
           style={{
-            transform: `rotateZ(${time.getMinutes() * 6}deg)`
+            transform: `rotateZ(${time.getMinutes() * 6}deg)`,
           }}
         />
         <div
           className="sec_hand"
           style={{
-            transform: `rotateZ(${time.getSeconds() * 6}deg)`
+            transform: `rotateZ(${time.getSeconds() * 6}deg)`,
           }}
         />
         <span className="twelve">12</span>

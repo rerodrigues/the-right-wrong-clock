@@ -1,5 +1,5 @@
 import './Clock.sass';
-import { memo, useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from 'react';
 import { ClockProps } from '../../types/Clock';
 import { ONE_SECOND_IN_MS } from '../../constants';
 
@@ -14,7 +14,7 @@ const Clock = memo((props: ClockProps) => {
   const seconds = time.getSeconds().toString().padStart(2, '0');
 
   useEffect(() => {
-    if(isEnabled) {
+    if (isEnabled) {
       const intervalFn = () => {
         setTime(new Date());
       };
@@ -23,22 +23,22 @@ const Clock = memo((props: ClockProps) => {
       timerId.current = setInterval(intervalFn, ONE_SECOND_IN_MS);
 
       return () => {
-        if(timerId.current) clearTimeout(timerId.current);
-      }
+        if (timerId.current) clearTimeout(timerId.current);
+      };
     }
-  },[isEnabled, ownTime]);
+  }, [isEnabled, ownTime]);
 
   return (
     <div className="clock-container">
       <div className={className}>
-        <span className='clock_hour'>{hour}</span>
-        <span className='clock_minute'>{minute}</span>
-        <span className='clock_seconds'>{seconds}</span>
+        <span className="clock_hour">{hour}</span>
+        <span className="clock_minute">{minute}</span>
+        <span className="clock_seconds">{seconds}</span>
       </div>
     </div>
   );
 });
 
-Clock.displayName = 'Clock'
+Clock.displayName = 'Clock';
 
 export default Clock;

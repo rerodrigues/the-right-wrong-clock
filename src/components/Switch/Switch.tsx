@@ -1,5 +1,5 @@
-import { memo } from "react";
-import "./Switch.sass";
+import { memo } from 'react';
+import './Switch.sass';
 
 interface SwitchProps {
   onLabel?: string;
@@ -16,24 +16,34 @@ const Switch = memo((props: SwitchProps) => {
   const offLabel = props.offLabel || defaultOffLabel;
 
   const generateId = () => {
-    const clean = (text: string) => text.replace(/[^a-zA-Z0-9]/, "");
+    const clean = (text: string) => text.replace(/[^a-zA-Z0-9]/, '');
     return `switch_${clean(onLabel)}_${clean(offLabel)}`;
   };
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if(onChange) {
+    if (onChange) {
       onChange(e.target.checked);
     }
-  }
+  };
 
   const switchId = generateId();
 
   return (
     <div>
-      <input className="switch switch-skewed" id={switchId} type="checkbox" onChange={handleOnChange}/>
-      <label className="switch-btn" data-switch-off={offLabel || defaultOffLabel} data-switch-on={onLabel || defaultOnLabel} htmlFor={switchId} />
+      <input
+        className="switch switch-skewed"
+        id={switchId}
+        type="checkbox"
+        onChange={handleOnChange}
+      />
+      <label
+        className="switch-btn"
+        data-switch-off={offLabel || defaultOffLabel}
+        data-switch-on={onLabel || defaultOnLabel}
+        htmlFor={switchId}
+      />
     </div>
-  )
+  );
 });
 
 Switch.displayName = 'Switch';
