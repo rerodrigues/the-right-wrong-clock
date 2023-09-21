@@ -19,7 +19,7 @@
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "plugin:prettier/recommended"
   ],
   "ignorePatterns": ["dist", ".eslintrc.cjs"],
   "parserOptions": {
@@ -27,7 +27,7 @@
     "sourceType": "module"
   },
   "parser": "@typescript-eslint/parser",
-  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier", "react-refresh"],
+  "plugins": ["react", "react-hooks", "@typescript-eslint", "react-refresh", "prettier"],
   "rules": {
     "react-refresh/only-export-components": [
       "warn",
@@ -35,5 +35,11 @@
         "allowConstantExport": true
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
+      "extends": ["plugin:jest-dom/recommended", "plugin:testing-library/react"]
+    }
+  ]
 }
