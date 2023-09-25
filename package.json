@@ -14,7 +14,7 @@
     "preview": "vite preview",
     "test": "jest",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -m 'Deploy React app to GitHub Pages'",
+    "deploy": "gh-pages -d dist -m 'Deploy React app to GitHub Pages'",
     "prepare": "husky install",
     "check": "tsc --noEmit --skipLibCheck",
     "format": "prettier --write 'src/**/*.{ts,tsx,json}'",

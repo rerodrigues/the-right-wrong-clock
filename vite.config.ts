@@ -8,6 +8,7 @@ const root = path.resolve(__dirname, 'src');
 export default defineConfig({
   plugins: [react()],
   root,
+  base: './',
   publicDir: path.resolve(root, '../public'),
   build: {
     outDir: path.resolve(root, '../dist'),
